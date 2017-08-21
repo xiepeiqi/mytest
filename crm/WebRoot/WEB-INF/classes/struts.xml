@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- 开启静态资源过滤的常量 -->
+    <constant name="struts.action.excludePattern" value="/static/.*"></constant>
+	<!-- 主题样式 -->
+	<constant name="struts.ui.theme" value="simple"/>
+    
+	<package name="base" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="msg">/views/msg.jsp</result>
+		</global-results>
+		<!-- 用户模块action -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="list">/views/user/list.jsp</result>
+			<result name="main">/views/main.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		
+		<!-- 客户模块Action -->
+		<action name="customer_*" class="customerAction" method="{1}">
+			<result name="input">/views/customer/add.jsp</result>
+			<result name="list">/views/customer/list.jsp</result>
+			<result name="edit">/views/customer/add.jsp</result>
+		</action>
+		
+		<!-- 联系人模块Action -->
+		<action name="linkman_*" class="linkmanAction" method="{1}">
+			<result name="add">/views/linkman/add.jsp</result>
+			<result name="list">/views/linkman/list.jsp</result>
+		</action>
+		
+		
+		<action name="log_*" class="logAction" method="{1}">
+			<result name="list">/views/log/list.jsp</result>
+		</action>
+		
+		
+	 	
+	</package>
+	
+</struts>

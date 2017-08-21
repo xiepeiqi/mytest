@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.dtd">
+  		
+<validators>
+	<!-- 需要验证的字段 -->
+	<field name="custName">
+		<field-validator type="requiredstring">
+			<message>客户名称不能为空</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">32</param>
+			<param name="minLength">4</param>
+			<message>客户名称的长度为：4-32位</message>
+		</field-validator>
+	</field>
+	<!-- 手机号码验证 -->
+	<field name="custMobile">
+		<!-- 验证不能为空 -->
+		<field-validator type="requiredstring">
+			<message>客户手机号码不能为空</message>
+		</field-validator>
+		<!-- 验证手机格式 -->
+		<field-validator type="regex">
+			<param name="regexExpression">^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</param>
+			<message>手机号码格式有误</message>
+		</field-validator>
+	</field>
+	
+</validators>  		
+  		

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>crm</display-name>
+  
+    <!-- 1、spring的资源文件加载监听器 -->
+    <listener>
+  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	</listener>
+  	<context-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:/applicationContext.xml</param-value>
+  	</context-param>
+  	
+  	
+  	<!-- 在view中打开session，扩大范围 -->
+  	<filter>
+  		<filter-name>oivf</filter-name>
+  		<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+  		<init-param>
+  			<!-- 默认情况下，这个过滤器会到spring工厂中获取一个id为“sessionFactory”  的session工厂类 -->
+  			<!-- 想修改这儿默认值，可以按照如下方式修改 -->
+  			<param-name>sessionFactoryBeanName</param-name>	
+  			<param-value>localSessionFactoryBean</param-value>
+  		</init-param>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>oivf</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	
+  	
+  	<!-- 2、struts2核心过滤器 -->
+  	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	
+  
+  
+  
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

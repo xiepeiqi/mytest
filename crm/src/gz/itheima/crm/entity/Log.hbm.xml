@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="gz.itheima.crm.entity.Log" table="sys_log">
+		<id name="log_id" column="log_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="opt_user" column="opt_user"></property>
+		<property name="log_time" column="log_time"></property>
+		<property name="function" column="function"></property>
+		<property name="login_ip" column="login_ip"></property>
+	</class>
+	
+</hibernate-mapping>
